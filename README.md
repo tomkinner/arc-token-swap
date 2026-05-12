@@ -44,3 +44,6 @@ Click Deploy.
 
 📄 License
 This project is licensed under the MIT License. 
+📍 Deployed Contract Address
+The TokenSwap smart contract is successfully deployed and verified on the Arc Network Testnet:
+0xC8F83732efeeD1dAaa2E3508859A70818dE169d1
