@@ -54,3 +54,43 @@ The `ArcSwapPro` contract must hold enough of **Token B (Output Token)** to pay 
 ---
 
 **Developed by [Tomkinner](https://github.com/tomkinner)** 🚀
+## 3. 🖼️ ArcNFT.sol (NFT Collection)
+This contract allows users to mint unique digital assets (NFTs) conforming to the OpenZeppelin ERC721 standard.
+- *Key Feature:* Standard NFT Minting logic.
+- *Function:* mintNFT(address recipient, string memory tokenURI)
+- *Status:* Core collection setup complete.
+
+## 4. 🏪 ArcNFTMarketplace.sol (NFT Marketplace)
+This is a decentralized marketplace contract that allows users to securely list their NFTs for sale and buy listed NFTs from others.
+- *Key Features:*
+  - *Secure Escrow:* Holds the NFT safely in the contract until it is purchased.
+  - *Platform Fee:* Charges a fixed listing fee of `0.025 ether` to the seller.
+  - *Security Guard:* Built using OpenZeppelin's `ReentrancyGuard` to prevent reentrancy attacks during trades.
+- *Status:* Ready for listing and trading interaction.
+
+## 📖 How to List and Buy NFTs
+
+Follow these steps to test the NFT Marketplace successfully:
+
+### Step 1: Mint your NFT 🎨
+Before listing, you need an NFT to sell.
+1. Go to the **ArcNFT** contract.
+2. Call the `mintNFT` function with your address and token metadata URI.
+
+### Step 2: NFT Approval 🔓
+Before calling the marketplace listing, you must grant permission to the marketplace contract to handle your NFT.
+1. Go to your **ArcNFT** contract.
+2. Call the `approve` or `setApprovalForAll` function.
+3. *Operator/Spender:* (Your ArcNFTMarketplace Contract Address).
+4. *Token ID:* The ID of the NFT you wish to list.
+
+### Step 3: Execute Listing 🚀
+1. Go to the **ArcNFTMarketplace** contract.
+2. Call `listNFT(nftContract_address, tokenId, price)`.
+3. *Note:* Make sure to send the required `0.025 ether` platform fee along with the transaction.
+4. Confirm the transaction in MetaMask. Your NFT is now listed!
+
+### Step 4: Buying an NFT 💰
+1. A buyer goes to the **ArcNFTMarketplace** contract.
+2. Calls `buyNFT(listingId)` and sends the exact `price` in ether.
+3. The contract automatically transfers the funds to the seller and sends the NFT to the buyer.
